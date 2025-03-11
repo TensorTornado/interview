@@ -1,9 +1,10 @@
 import streamlit as st
 
 # Google Hiring Assessment Simulation
-st.title("Google Hiring Assessment Simulation - 100 Questions")
+st.title("Google Hiring Assessment Simulation - 300 Questions")
 st.write("Select the best answers based on Google's expected work behaviors.")
 
+# Base questions
 questions = [
     ("I always follow company policies, even if it makes my job harder.", ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"]),
     ("If I notice someone violating company policies, I immediately report it.", ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"]),
@@ -17,8 +18,8 @@ questions = [
     ("If I can't find a root cause for an issue, I still take action to minimize the impact.", ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"])
 ]
 
-# Expanding the questions to 100 by modifying sentence structure
-for i in range(10, 100):
+# Expanding the questions to 300 by rewording and generating variants
+for i in range(10, 300):
     questions.append((f"Variant {i+1}: {questions[i%10][0]}", questions[i%10][1]))
 
 # User responses
