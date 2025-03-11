@@ -136,7 +136,7 @@ pluggy==1.5.0
 proglog==0.1.10
 prompt_toolkit==3.0.48
 proto-plus==1.25.0
-protobuf==5.29.2
+protobuf>=4.25.3,<5
 psutil==6.1.1
 ptyprocess==0.7.0
 pure_eval==0.2.3
