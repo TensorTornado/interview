@@ -25,12 +25,25 @@ base_questions = [
 questions = [(f"{i+1}. {base_questions[i % 10]}", ["Strongly Agree", "Agree", "Neutral", "Disagree", "Strongly Disagree"])
              for i in range(300)]
 
-# Pagination logic
-total_pages = len(questions) // QUESTIONS_PER_PAGE
-page = st.number_input("Select Page", min_value=1, max_value=total_pages, value=1, step=1)
+# Session state for tracking page
+if "page" not in st.session_state:
+    st.session_state.page = 1
+
+# Navigation buttons
+col1, col2 = st.columns([1, 1])
+
+with col1:
+    if st.session_state.page > 1:
+        if st.button("⬅️ Previous"):
+            st.session_state.page -= 1
+
+with col2:
+    if st.session_state.page < (len(questions) // QUESTIONS_PER_PAGE):
+        if st.button("Next ➡️"):
+            st.session_state.page += 1
 
 # Calculate question range for the selected page
-start_idx = (page - 1) * QUESTIONS_PER_PAGE
+start_idx = (st.session_state.page - 1) * QUESTIONS_PER_PAGE
 end_idx = start_idx + QUESTIONS_PER_PAGE
 current_questions = questions[start_idx:end_idx]
 
